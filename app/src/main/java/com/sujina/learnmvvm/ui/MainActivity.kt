@@ -1,7 +1,8 @@
-package com.sujina.learnmvvm
+package com.sujina.learnmvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sujina.learnmvvm.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
