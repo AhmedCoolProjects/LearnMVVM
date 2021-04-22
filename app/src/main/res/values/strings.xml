@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LearnMVVM</string>
+    <string name="desc">description</string>
 </resources>
