@@ -18,14 +18,21 @@
         android:id="@+id/editTaskFragment"
         android:name="com.sujina.learnmvvm.ui.editTask.EditTaskFragment"
         android:label="{title}"
-        tools:layout="@layout/fragment_add_edit_task" >
+        tools:layout="@layout/fragment_add_edit_task">
         <argument
             android:name="task"
+            android:defaultValue="@null"
             app:argType="com.sujina.learnmvvm.data.Task"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <argument
             android:name="title"
             app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteAllCompletedDialogFragment"
+        android:name="com.sujina.learnmvvm.ui.dialog.DelleteAllCompletedDialog"
+        android:label="DeleteAllCompletedDialogFragment" />
+    <action
+        android:id="@+id/action_global_deleteAllCompletedDialogFragment"
+        app:destination="@id/deleteAllCompletedDialogFragment" />
 </navigation>
