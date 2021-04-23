@@ -14,7 +14,7 @@ android:background="@color/purple_200"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-       android:id="@+id/add_task_btn"
+       android:id="@+id/add_task_fab"
         android:src="@drawable/ic_baseline_add_24"
         />
 
