@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:id="@+id/check_mark_btn"
+        android:id="@+id/save_new_task_fab"
         android:src="@drawable/ic_baseline_done_24"
         />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

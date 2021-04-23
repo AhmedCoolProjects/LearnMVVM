@@ -8,6 +8,8 @@ import com.sujina.learnmvvm.data.PreferencesManager
 import com.sujina.learnmvvm.data.SortOrder
 import com.sujina.learnmvvm.data.Task
 import com.sujina.learnmvvm.data.TaskDao
+import com.sujina.learnmvvm.ui.ADD_TASK_RESULT_OK
+import com.sujina.learnmvvm.ui.EDIT_TASK_RESULT_OK
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
@@ -65,10 +67,20 @@ class TasksViewModel @ViewModelInject constructor(
     fun onAddNewTaskClick() = viewModelScope.launch {
         tasksEventChannel.send(TasksEvent.NavigateToAddTaskScreen)
     }
+    fun onAddEditResult(result: Int) {
+        when (result) {
+            ADD_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task added")
+            EDIT_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task updated")
+        }
+    }
 
+    private fun showTaskSavedConfirmationMessage(text: String) = viewModelScope.launch {
+        tasksEventChannel.send(TasksEvent.ShowTaskSavedConfirmationMessage(text))
+    }
     sealed class TasksEvent {
         object NavigateToAddTaskScreen : TasksEvent()
         data class NavigateToEditTaskScreen(val task: Task) : TasksEvent()
         data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
+        data class ShowTaskSavedConfirmationMessage(val msg: String) : TasksEvent()
     }
 }
