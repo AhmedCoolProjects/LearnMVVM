@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sujina.learnmvvm.R
 import com.sujina.learnmvvm.data.SortOrder
+import com.sujina.learnmvvm.data.Task
 import com.sujina.learnmvvm.databinding.FragmentTasksBinding
 import com.sujina.learnmvvm.util.onQueryTextChanged
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TasksFragment: Fragment(R.layout.fragment_tasks) {
+class TasksFragment: Fragment(R.layout.fragment_tasks), TasksAddapter.OnItemClickListener {
     private val viewModel: TasksViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class TasksFragment: Fragment(R.layout.fragment_tasks) {
 
         val binding = FragmentTasksBinding.bind(view)
 
-        val taskAdapter = TasksAddapter()
+        val taskAdapter = TasksAddapter(this)
 
         binding.apply {
             recycler_id.apply {
@@ -42,6 +43,13 @@ class TasksFragment: Fragment(R.layout.fragment_tasks) {
             taskAdapter.submitList(it)
         }
         setHasOptionsMenu(true)
+    }
+    override fun onItemClick(task: Task) {
+        viewModel.onTaskSelected(task)
+    }
+
+    override fun onCheckBoxClick(task: Task, isChecked: Boolean) {
+        viewModel.onTaskCheckedChanged(task, isChecked)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
