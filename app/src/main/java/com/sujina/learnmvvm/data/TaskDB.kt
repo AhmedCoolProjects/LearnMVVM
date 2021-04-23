@@ -23,7 +23,7 @@ abstract class TaskDB : RoomDatabase(){
             // db operations
             val dao = database.get().taskDao()
 
-            applicationScope.launch {
+            /*applicationScope.launch {
                 dao.insert(Task("My first to do"))
                 dao.insert(Task("My first to do"))
                 dao.insert(Task("My first to do"))
@@ -33,7 +33,7 @@ abstract class TaskDB : RoomDatabase(){
                 dao.insert(Task("My first to do"))
                 dao.insert(Task("My first to do"))
                 dao.insert(Task("My first to do yes 2",completed = true))
-            }
+            }*/
 
         }
     }
