@@ -1,7 +1,6 @@
 package com.sujina.learnmvvm.data
 
 import androidx.room.*
-import com.sujina.learnmvvm.ui.tasks.SortOrder
 import kotlinx.coroutines.flow.Flow
 
 @Dao
